@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let markWeight=95;
+        let markHeight=1.88;
+        let johnWeight =85;
+        let johnHeight=1.76;
+        const markBMI=(markWeight/(markHeight**2)).toFixed(1);
+        const johnBMI=(johnWeight/(johnHeight**2)).toFixed(1);
+        const markHigherBMI=markBMI>johnBMI;
+        if(markHigherBMI) {
+            console.log(`Mark's BMI (${markBMI}) is higher than John's (${johnBMI})!`);
+        }else console.log(`John's (${johnBMI}) is higher than  Mark's BMI (${markBMI}) !`);
+</script>
+</body>
+</html>

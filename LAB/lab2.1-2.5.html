@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const country = "Việt Nam";
+         const   continent = "Asia";
+        let   population = 97;
+        const islsland = false;
+        const language="Vietnamese";
+        console.log(typeof(country),typeof(continent),typeof(population),typeof(islsland),typeof(language));
+        console.log(population/2);
+        console.log(population+1);
+        console.log(population>6);
+        console.log(population<33);
+        let description = country +" and its "+population+ " milion people speak "+language;
+        let description1= `${country} and its ${population} milion people speak ${language}`;
+        if (population>33) {
+            console.log(`${country}'s population is above average.`);
+        }else console.log(`${country}'s population is ${33 - population} million below average`);
+    </script>
+</body>
+</html>
