@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Lab4.1---------------------------------
+
+        function describeCountry(country, population, capitalCity) {
+            return(`${country} has ${population} million people and its capital city is ${capitalCity}.`);
+        }
+        const country1 = describeCountry('VietNam',97,'HaNoi');
+        const country2 = describeCountry('Finland',6,'Helsinki');
+        const country3 = describeCountry('France',100,'Paris');
+        console.log(country1, country2,  country3);
+
+        // Lab4.2---------------------------------
+
+        function percentageOfWorld1(population) {
+            return (population/7900*100).toFixed(1) ;
+        }
+        const country4 = percentageOfWorld1(97) ;
+        const country5 = percentageOfWorld1(97) ;
+        const country6 = percentageOfWorld1(9) ;
+        console.log(country4, country5,  country6);
+
+        const percentageOfWorld2 = function(population){
+            return (population/7900*100).toFixed(1) ;
+        }
+        const country7= percentageOfWorld2(97) ;
+        const country8 = percentageOfWorld2(97) ;
+        const country9 = percentageOfWorld2(9) ;
+        console.log(country7, country8,  country9);
+
+        // Lab4.3---------------------------------
+
+        const percentageOfWorld3 = population =>{
+            return (population/7900*100).toFixed(1) ;
+        }
+        const countrya= percentageOfWorld3(97) ;
+        const countryb = percentageOfWorld3(97) ;
+        const countryc = percentageOfWorld3(9) ;
+        console.log(countrya, countryb,  countryc);
+
+         // Lab4.4---------------------------------
+
+        const describePopulatioin = (country,population) => {
+            return(`${country} has ${population} million people, which is about ${percentageOfWorld1(population)}% of the world.`)
+        }
+        console.log(describePopulatioin('Viet Nam',97));
+        console.log(describePopulatioin('China',1441));
+        console.log(describePopulatioin('Lao',60));
+
+        // Lab4.5---------------------------------
+
+        const populations = [20, 30, 40, 1441];
+        console.log(populations.length===4);
+        const percentages = [percentageOfWorld1(populations[0]),percentageOfWorld1(populations[1]),percentageOfWorld1(populations[2]), percentageOfWorld1(populations[3])] ;
+        console.log(percentages);
+
+         // Lab4.6---------------------------------
+
+         const neighbours = ['Cambodia', 'Laos', 'China'];
+         console.log(neighbours);
+         neighbours.push('Utopia');
+         console.log(neighbours);
+        neighbours.pop();
+        console.log(neighbours);
+        if(!neighbours.includes('Germany')) console.log('Probably not a central Eurpean country :D');
+        neighbours[neighbours.indexOf('China')]='Republic of China';
+        console.log(neighbours); 
+    </script>
+</body>
+</html>
