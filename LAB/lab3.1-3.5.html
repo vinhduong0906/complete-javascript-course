@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Lab 3.1---------------------
+
+//  '9' - '5';//4
+
+// '19' - '13' + '17';//617
+
+// '19' - '13' + 17;//23
+
+// '123' < 57;//false
+
+// 5 + 6 + '4' + 9 - 4 - 2;/1143
+console.log('9' - '5');
+
+console.log('19' - '13' + '17');
+
+console.log('19' - '13' + 17);
+
+console.log('123' < 57);
+
+console.log(5 + 6 + '4' + 9 - 4 - 2);
+
+// Lab 3.2------------------------------------
+
+// let numNeighbours=prompt('How many neighbor countries does your country have?');
+// if(numNeighbours==1) console.log('Only 1 border!');
+// else if(numNeighbours>1) console.log('More than 1 border');
+// else console.log('No borders')
+
+// Lab 3.3-------------------------------------------
+
+let language=prompt('Language');
+let population=Number(prompt('Population'));
+let island=Boolean(Number(prompt('Is island')));
+if(language=='English'&&population<50&&!island)
+console.log('You should live in Portugal :)');
+else console.log('Portugal does not meet your criteria :(')
+
+// Lab 3.4------------------------------------------------
+
+switch (language) {
+    case 'Chinese'||'Mandarin':
+        console.log('MOST number of native speakers!');
+        break;
+    case 'Spanish':
+        console.log('2nd place in number of native speakers');
+        break;
+    case 'English':
+        console.log('3rd place');
+        break;
+    case 'Hindi':
+        console.log('Number 4');
+        break;
+    case 'Arabic': 
+        console.log('5th most spoken language');
+        break;
+    default:
+        console.log('Great language too :D');
+        break;
+}
+
+// Lab 3.5------------------------------------------
+
+population > 33 ? console.log("Portugal's population is above everage"):console.log("Portugal's population is below everage");
+
+
+    </script>
+</body>
+</html>
