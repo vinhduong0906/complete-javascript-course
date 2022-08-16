@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/038ff53614.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Guest number</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="menu">
+          <button class="again-btn">Again</button>
+          <p>(Between 1 and 20)</p>
+        </div>
+        <h1>Guest My Number!</h1>
+      </header>
+      <div class="number">?</div>
+      <div class="main-section">
+        <div class="input">
+          <input type="number" id="input-number" />
+          <button class="check-btn">Check!</button>
+        </div>
+        <div>
+          <p class="guest-status">Start guesting...</p>
+          <div class="score">
+            <div>
+              <i class="fa-solid fa-fire-flame-curved" style="color: red"></i>
+              <p>Score:</p>
+              <span class="present-score">0</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-meteor" style="color: orange"></i>
+              <p>High Score:</p>
+              <span class="high-score">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
