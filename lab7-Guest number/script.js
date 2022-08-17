@@ -26,20 +26,11 @@ initialation(score, highScore, guestStatus);
 
 document.querySelector(".check-btn").addEventListener("click", function () {
   let guestNumber = Number(document.querySelector("#input-number").value);
-  if (guestNumber < number) {
-    {
-      score--;
-      guestStatus = "Too low!";
-    }
-  } else if (guestNumber > number) {
-    score--;
-    guestStatus = "Too high!";
-  }
-
+  if (!guestNumber) guestStatus = "⛔ No number!";
   //Correct number case
-  else {
+  else if (guestNumber === number) {
     document.querySelector(".container").style.backgroundColor = "green";
-    guestStatus = "Correct number!";
+    guestStatus = "😁 Correct number!";
     document.querySelector(".number").textContent = number;
     if (highScore < score) {
       highScore = score;
@@ -47,10 +38,15 @@ document.querySelector(".check-btn").addEventListener("click", function () {
     }
 
     document.querySelector(".check-btn").disabled = true;
+  } else {
+    guestStatus = guestNumber < number ? "😒 Too low!" : "😒 Too high!";
+
+    score--;
   }
+
   //Lose case
   if (score === 0) {
-    guestStatus = "You lose!";
+    guestStatus = "😒 You lose!";
     document.querySelector(".container").style.backgroundColor = "red";
     document.querySelector(".check-btn").disabled = true;
   }
