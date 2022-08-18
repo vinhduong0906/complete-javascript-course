@@ -36,10 +36,12 @@ body {
   z-index: 5;
 }
 .modal {
-  width: 70%;
-  margin: 0 auto;
+  width: 30%;
+  padding: 20px;
+  margin: 30px auto auto;
   background-color: #fff;
   position: relative;
+  z-index: 10;
 }
 .close-modal {
   position: absolute;
