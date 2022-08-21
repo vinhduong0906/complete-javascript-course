@@ -87,6 +87,7 @@ hold.addEventListener("click", function () {
           playing = false;
           $playerTimes[i]++;
           playTimes[i].textContent = $playerTimes[i];
+          break;
         } else {
           changePlayer();
           break;

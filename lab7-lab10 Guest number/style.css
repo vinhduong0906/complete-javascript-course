@@ -32,6 +32,9 @@ header {
   transform: translate(-50%, -50%);
   font-size: 64px;
 }
+.correct-number {
+  width: 150px;
+}
 i {
   font-size: 16px;
 }
@@ -57,12 +60,13 @@ i {
   align-items: center;
 }
 #input-number {
+  font-family: Silkscreen;
   height: 70px;
   width: 200px;
   background-color: #000;
   border: 1px solid #fff;
   color: #fff;
-  font-size: 30px;
+  font-size: 35px;
 }
 .check-btn {
   padding: 5px 10px;
