@@ -34,7 +34,6 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -72,5 +71,87 @@ const currencies = new Map([
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
+let currentUser = null;
 /////////////////////////////////////////////////
+
+function makeUserName(arr) {
+  let userName = '';
+  //[john,smith]
+  arr.forEach(function (element) {
+    // [j,o,h,n]
+    userName += Array.from(element)[0];
+  });
+  return userName;
+}
+// Create userName
+accounts.forEach(function (element) {
+  //"john adam">[john,adam]>"jd"
+  element.userName = makeUserName(element.owner.toLowerCase().split(' '));
+});
+
+//wellcome user
+const welcomeUser = user => {
+  labelWelcome.innerHTML = `Welcome back, ${user.owner.split(' ')[0]}`;
+};
+
+//display balance
+const currentBalance = user =>
+  (labelBalance.innerHTML = user.movements.reduce((a, b) => a + b, 0) + '€');
+
+//display movements
+const showMovements = user => {
+  let movements = [];
+  user.movements.forEach((movement, index) => {
+    movements.unshift(`<div class="movements__row">
+    <div class="movements__type movements__type--${
+      movement > 0 ? 'deposit' : 'withdrawal'
+    }">${index + 1} ${movement > 0 ? 'deposit' : 'withdrawal'}</div>
+    <div class="movements__value">${movement}€</div>
+  </div>`);
+  });
+  containerMovements.innerHTML = movements.join('');
+};
+
+//Show deposit total
+const showDepositTotal = user => {
+  labelSumIn.innerHTML =
+    user.movements.filter(movement => movement > 0).reduce((a, b) => a + b, 0) +
+    '€';
+};
+// Login
+const showWithdrawTotal = user =>
+  (labelSumOut.innerHTML =
+    Math.abs(
+      user.movements.filter(movement => movement < 0).reduce((a, b) => a + b, 0)
+    ) + '€');
+//Show the day of today
+const showDay = () => (labelDate.innerHTML = new Date().toLocaleDateString());
+
+//Show Interest
+const showInterest = user => {
+  labelSumInterest.innerHTML = user.movements
+    .map(movement => {
+      return movement > 0 && (movement * user.interestRate) / 100;
+    })
+    .filter(int => int >= 1)
+    .reduce((a, b) => a + b, 0);
+};
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  // Check current user
+  const user =
+    accounts[
+      accounts.findIndex(user => user.userName === inputLoginUsername.value)
+    ];
+  if (user.pin === Number(inputLoginPin.value)) {
+    containerApp.style.opacity = 1;
+    currentUser = user;
+    welcomeUser(currentUser);
+    currentBalance(currentUser);
+    showMovements(currentUser);
+    showDepositTotal(currentUser);
+    showWithdrawTotal(currentUser);
+    showDay();
+    showInterest(currentUser);
+  }
+});

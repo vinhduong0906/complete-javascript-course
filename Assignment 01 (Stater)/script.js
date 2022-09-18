@@ -135,7 +135,8 @@ const deletePet = (petId) => {
   // Confirm before deletePet
   if (confirm("Are you sure?")) {
     const petIndex = petArr.findIndex((element) => element.id === petId);
-    petArr.splice(petIndex);
+    console.log(petIndex);
+    petArr.splice(petIndex, 1);
     renderTable(petArr);
   }
 };
