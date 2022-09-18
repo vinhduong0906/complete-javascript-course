@@ -8,7 +8,7 @@
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
+  interestRate: 1.2,
   pin: 1111,
 };
 
@@ -74,19 +74,14 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 let currentUser = null;
 /////////////////////////////////////////////////
 
-function makeUserName(arr) {
-  let userName = '';
-  //[john,smith]
-  arr.forEach(function (element) {
-    // [j,o,h,n]
-    userName += Array.from(element)[0];
-  });
-  return userName;
-}
 // Create userName
 accounts.forEach(function (element) {
   //"john adam">[john,adam]>"jd"
-  element.userName = makeUserName(element.owner.toLowerCase().split(' '));
+  element.userName = element.owner
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
 });
 
 //wellcome user
