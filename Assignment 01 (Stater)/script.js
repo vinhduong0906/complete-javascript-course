@@ -93,6 +93,8 @@ const clearInput = () => {
   sterilizedInput.checked = false;
 };
 
+//display data to page
+
 const renderTable = (petArr) => {
   tableBodyEl.innerHTML = "";
   petArr.forEach((pet) => {
