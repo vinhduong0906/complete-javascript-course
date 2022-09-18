@@ -95,21 +95,21 @@ const welcomeUser = user => {
 };
 
 //display balance
-const currentBalance = user =>
-  (labelBalance.innerHTML = user.movements.reduce((a, b) => a + b, 0) + '€');
-
+const currentBalance = () => currentUser.movements.reduce((a, b) => a + b, 0);
+const showCurrentBalance = currentBalance =>
+  (labelBalance.innerHTML = currentBalance + '€');
 //display movements
-const showMovements = user => {
-  let movements = [];
-  user.movements.forEach((movement, index) => {
-    movements.unshift(`<div class="movements__row">
+const showMovements = movements => {
+  let displayMovements = [];
+  movements.forEach((movement, index) => {
+    displayMovements.unshift(`<div class="movements__row">
     <div class="movements__type movements__type--${
       movement > 0 ? 'deposit' : 'withdrawal'
     }">${index + 1} ${movement > 0 ? 'deposit' : 'withdrawal'}</div>
     <div class="movements__value">${movement}€</div>
   </div>`);
   });
-  containerMovements.innerHTML = movements.join('');
+  containerMovements.innerHTML = displayMovements.join('');
 };
 
 //Show deposit total
@@ -136,6 +136,7 @@ const showInterest = user => {
     .filter(int => int >= 1)
     .reduce((a, b) => a + b, 0);
 };
+// Login check
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   // Check current user
@@ -148,10 +149,40 @@ btnLogin.addEventListener('click', function (e) {
     currentUser = user;
     welcomeUser(currentUser);
     currentBalance(currentUser);
-    showMovements(currentUser);
+    showMovements(currentUser.movements);
     showDepositTotal(currentUser);
     showWithdrawTotal(currentUser);
     showDay();
     showInterest(currentUser);
   }
+});
+//Sort function
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault;
+  if (!sorted) {
+    showMovements([...currentUser.movements].sort((a, b) => a - b));
+    sorted = true;
+  } else {
+    showMovements(currentUser.movements);
+    sorted = false;
+  }
+});
+
+//Transfer function
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('ok');
+  const amountTransfer = Number(inputTransferAmount.value);
+  const accountTransfer = [...accounts]
+    .map(acount => acount.userName)
+    .find(acount => acount.userName === inputTransferTo.value);
+  console.log(accountTransfer, amountTransfer);
+  if (accountTransfer && currentBalance >= amountTransfer) {
+    accountTransfer.movements.push(amountTransfer);
+    currentUser.movements.push(-amountTransfer);
+    showMovements(currentUser.movements);
+  }
+  inputTransferTo.value = '';
+  inputTransferAmount.value = '';
 });
