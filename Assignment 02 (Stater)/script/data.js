@@ -19,24 +19,25 @@ importBtn.addEventListener("click", function () {
     reader.readAsText(file, "UTF-8");
     reader.onload = function (evt) {
       try {
-        JSON.parse(evt.target.result);
+        const petArrImport = JSON.parse(evt.target.result);
+        // JSON.parse(evt.target.result);
+        // const petArrImport = JSON.parse(evt.target.result);
+        petArrImport.forEach(function (element) {
+          const petIndex = petArr.findIndex((pet) => pet.id === element.id);
+
+          if (petIndex !== -1) {
+            petArr[petIndex] = element;
+          } else {
+            petArr.push(element);
+          }
+        });
+        saveToStorage("petData", JSON.stringify(petArr));
+        alert("Import successfull!");
+        inputFile.value = "";
       } catch (e) {
         alert("Invalid JSON file");
         return;
       }
-      const petArrImport = JSON.parse(evt.target.result);
-      petArrImport.forEach(function (element) {
-        const petIndex = petArr.findIndex((pet) => pet.id === element.id);
-
-        if (petIndex !== -1) {
-          petArr[petIndex] = element;
-        } else {
-          petArr.push(element);
-        }
-      });
-      saveToStorage("petData", JSON.stringify(petArr));
-      alert("Import successfull!");
-      inputFile.value = "";
     };
     reader.onerror = function (evt) {
       alert("error reading file");
